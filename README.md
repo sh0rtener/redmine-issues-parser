@@ -29,11 +29,12 @@
    cp infra/.env.example infra/.env
 2. Отредактируйте `infra/.env`, указав реальные данные (Redmine URL, API-ключ, параметры БД).
 3. Запустите сервисы:
-   docker compose -f infra/docker-compose.yml up -d --build
+   ```docker compose -f infra/docker-compose.yml up -d --build```
 
 ## Локальный запуск для разработки
-dotnet restore src/RedmineParser.slnx
-dotnet run --project src/RedmineParser.WebApi
+
+```dotnet restore src/RedmineParser.slnx```
+```dotnet run --project src/RedmineParser.WebApi```
 
 ## Конфигурация
 Основные переменные окружения (infra/.env.example):
@@ -46,7 +47,7 @@ dotnet run --project src/RedmineParser.WebApi
 - `docker-support.yml`: сборка и валидация Docker-образа.
 
 ## Тестирование
-dotnet test src/RedmineParser.slnx --verbosity normal
+```dotnet test src/RedmineParser.slnx --verbosity normal```
 
 ## База данных
 Скрипт инициализации схемы находится в `infra/create_psql_table.sql`.
