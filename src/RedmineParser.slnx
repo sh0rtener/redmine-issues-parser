@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="RedmineParser.Tests/RedmineParser.Tests.csproj" />
+  <Project Path="RedmineParser.WebApi/RedmineParser.WebApi.csproj" />
+</Solution>

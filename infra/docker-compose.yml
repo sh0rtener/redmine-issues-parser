@@ -1,0 +1,11 @@
+services:
+  redmine_parser-worker:
+    image: redmine_parser-worker
+    hostname: redmine_parser-worker
+    container_name: redmine_parser-worker
+    restart: always
+    build:
+      context: ../
+      dockerfile: src/RedmineParser.WebApi/Dockerfile
+    env_file:
+      - .env

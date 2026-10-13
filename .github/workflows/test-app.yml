@@ -1,0 +1,31 @@
+name: Restore, Build and Test service
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "src/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "src/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore solution
+        run: dotnet restore src/RedmineParser.slnx
+
+      - name: Build solution
+        run: dotnet build src/RedmineParser.slnx --no-restore --configuration Release
+
+      - name: Run tests
+        run: dotnet test src/RedmineParser.slnx --no-build --configuration Release --verbosity normal

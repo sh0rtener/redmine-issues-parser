@@ -1,0 +1,30 @@
+name: Build docker-compose (dev)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "infra/docker-compose.yml"
+      - "src/**/Dockerfile"
+      - "src/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "infra/docker-compose.yml"
+      - "src/**/Dockerfile"
+      - "src/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Validate compose file
+        run: docker compose -f infra/docker-compose.yml config
+
+      - name: Build all services
+        run: docker compose -f infra/docker-compose.yml build
