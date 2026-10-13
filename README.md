@@ -39,7 +39,7 @@
 ## Конфигурация
 Основные переменные окружения (infra/.env.example):
 - `Redmine__Url`: базовый URL экземпляра Redmine
-- `Redmine__ApiKey`: токен доступа пользователя Redmine
+- `Redmine__Basic__Username и Redmine__Basic__Password`: логин и пароль доступа пользователя Redmine
 - `ConnectionStrings__DefaultConnection`: строка подключения к PostgreSQL
 
 ## CI/CD
